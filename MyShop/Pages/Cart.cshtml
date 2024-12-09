@@ -1,0 +1,91 @@
+﻿@page
+@model MyShop.Pages.CartModel
+@{
+    ViewData["Title"] = "Корзина";
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cressida</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+
+    <div class="content">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <aside class="sidebar">
+                <a href="/Index">Главная</a>
+                <a href="/About">О нас</a>
+                <a href="/Catalog">Каталог</a>
+                <a href="/Contacts">Контакты</a>
+                <a href="/Feedback">Отзывы</a>
+            </aside>
+        }
+        else
+        {
+            <aside class="sidebar">
+                <a href="/Index">Главная</a>
+                <a href="/About">О нас</a>
+                <a href="/Catalog">Каталог</a>
+                <a href="/Contacts">Контакты</a>
+            </aside>
+        }
+
+
+        <main>
+            <h2>Корзина</h2>
+
+                @if (Model.Cart.Any())
+                    {
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Товар</th>
+                                <th>Количество</th>
+                                <th>Цена за единицу</th>
+                                <th>Итого</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Cart)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Price ₽</td>
+                                    <td>@(item.Quantity * item.Price) ₽</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <p><strong>Общая сумма: @Model.Cart.Sum(i => i.Quantity * i.Price) ₽</strong></p>
+                }
+                else
+                {
+                    <p>Ваша корзина пуста.</p>
+                }
+            <form method="post" action="Cart/ClearCart">
+                <button type="submit" class="clear-cart-button">Очистить корзину</button>
+            </form>
+
+      </main>
+
+
+                        <aside class="image-container">
+                            <img src="images/sale.png" alt="Изображение">
+                        </aside>
+                    </div>
+
+                    <footer>
+                        <hr>
+                        <p>Все права защищены</p>
+                    </footer>
+
+
+                    </body>
+                    </html>

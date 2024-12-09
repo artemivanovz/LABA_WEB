@@ -1,0 +1,128 @@
+﻿@page
+@model MyShop.Pages.ProductionModel
+@{
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cressida</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+    @* <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Логотип Cressida" class="logo-image">
+            </div>
+            <div class="site-name">Cressida</div>
+            <div class="auth-buttons">
+                <!-- Кнопки Вход и Авторизация -->
+                <label for="login-toggle" class="auth-button">Вход</label>
+                <label for="register-toggle" class="auth-button">Регистрация</label>
+            </div>
+        </div>
+        <nav class="top-nav">
+            <a href="/Service">Сервис</a>
+            <a href="/Certificates">Подарочные сертификаты</a>
+            <a href="/Production">Производство</a>
+            <form class="search-form" action="search.htm" method="get">
+                <input type="text" name="q" placeholder="Поиск по сайту" aria-label="Поиск по сайту">
+                <button type="submit">Найти</button>
+            </form>
+        </nav>
+
+        <!-- Чекбоксы для управления отображением меню -->
+        <input type="checkbox" id="login-toggle" class="menu-toggle">
+        <div class="auth-menu">
+            <label for="login-toggle" class="close-menu">&times;</label>
+            <form>
+                <h2>Вход</h2>
+                <label for="login-login">Логин:</label>
+                <input type="text" id="login-login" name="login" required>
+                <label for="login-password">Пароль:</label>
+                <input type="password" id="login-password" name="password" required>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+
+        <input type="checkbox" id="register-toggle" class="menu-toggle">
+        <div class="auth-menu">
+            <label for="register-toggle" class="close-menu">&times;</label>
+            <form>
+                <h2>Регистрация</h2>
+                <label for="register-lastname">Фамилия:</label>
+                <input type="text" id="register-lastname" name="lastname" required>
+                <label for="register-firstname">Имя:</label>
+                <input type="text" id="register-firstname" name="firstname" required>
+                <label for="register-login">Логин:</label>
+                <input type="text" id="register-login" name="login" required>
+                <label for="register-password">Пароль:</label>
+                <input type="password" id="register-password" name="password" required>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="policy-agreement" name="policy" required>
+                    <label for="policy-agreement">Я соглашаюсь с политикой конфиденциальности</label>
+                </div>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </header> *@
+
+
+
+    <div class="content">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <aside class="sidebar">
+                <a href="/Index">Главная</a>
+                <a href="/About">О нас</a>
+                <a href="/Catalog">Каталог</a>
+                <a href="/Contacts">Контакты</a>
+                <a href="/Feedback">Отзывы</a>
+            </aside>
+        }
+        else
+        {
+            <aside class="sidebar">
+                <a href="/Index">Главная</a>
+                <a href="/About">О нас</a>
+                <a href="/Catalog">Каталог</a>
+                <a href="/Contacts">Контакты</a>
+            </aside>
+        }
+
+
+        <main>
+            <h2>Производство</h2>
+            <p>Компания Cressida гордится своей богатой историей и качественным производством изделий из кожи и меха. Мы используем только лучшие материалы и инновационные технологии.</p>
+
+            <h3>Что мы производим:</h3>
+            <ul>
+                <li>Меховые изделия: шубы, жилеты, головные уборы.</li>
+                <li>Кожаные изделия: куртки, сумки, обувь.</li>
+                <li>Аксессуары: кошельки, ремни, чехлы.</li>
+            </ul>
+
+            <h3>Наши технологии:</h3>
+            <p>Мы используем современные методы обработки и выделки материалов, что позволяет создавать изделия высочайшего качества. Все этапы производства тщательно контролируются нашими специалистами.</p>
+
+            <h3>Наши ценности:</h3>
+            <p>Качество, долговечность и стиль — три ключевых принципа, которыми мы руководствуемся на каждом этапе создания нашей продукции.</p>
+        </main>
+
+
+        <aside class="image-container">
+            <img src="images/sale.png" alt="Изображение">
+        </aside>
+    </div>
+
+    <footer>
+        <hr>
+        <p>Все права защищены</p>
+    </footer>
+
+
+</body>
+</html>
