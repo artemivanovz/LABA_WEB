@@ -2,19 +2,42 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+//let slideIndex = 0;
+
+//function moveSlide(step) {
+//    const slides = document.querySelector(".slides");
+//    const totalSlides = slides.children.length;
+//    slideIndex = (slideIndex + step + totalSlides) % totalSlides;
+
+//    // Перемещение слайдов
+//    const offset = -slideIndex * 100; // Сдвиг по ширине слайда
+//    slides.style.transform = `translateX(${offset}%)`;
+//}
+
+//// Автоматическая смена слайдов каждые 5 секунд
+//setInterval(() => {
+//    moveSlide(1);
+//}, 5000);
 let slideIndex = 0;
 
-function moveSlide(step) {
-    const slides = document.querySelector(".slides");
-    const totalSlides = slides.children.length;
-    slideIndex = (slideIndex + step + totalSlides) % totalSlides;
+function showSlides() {
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
 
-    // Перемещение слайдов
-    const offset = -slideIndex * 100; // Сдвиг по ширине слайда
-    slides.style.transform = `translateX(${offset}%)`;
+    slides.forEach((slide, index) => {
+        slide.style.display = (index === slideIndex) ? 'block' : 'none';
+    });
 }
 
-// Автоматическая смена слайдов каждые 5 секунд
-setInterval(() => {
-    moveSlide(1);
-}, 5000);
+function moveSlide(step) {
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    slideIndex = (slideIndex + step + totalSlides) % totalSlides;
+    showSlides();
+}
+
+// Инициализация слайдера
+document.addEventListener("DOMContentLoaded", () => {
+    showSlides();
+});

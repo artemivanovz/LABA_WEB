@@ -22,8 +22,7 @@
                     <!-- Если пользователь авторизован, приветствуем -->
                     <span>Здравствуйте, @User.Identity.Name</span>
                     <a href="/Cart" class="auth-button">Корзина</a>
-                    <form method="post" action="/Index" style="display:inline;">
-                        @Html.AntiForgeryToken()
+                    <form action="/Account/Logout" method="post" style="display:inline;">
                         <button type="submit" class="auth-button">Выйти</button>
                     </form>
                 }
@@ -32,7 +31,6 @@
                     <!-- Если не авторизован - показываем кнопки -->
                     <a href="/Login" class="auth-button">Вход</a>
                     <a href="/Register" class="auth-button">Регистрация</a>
-                    <a href="/Cart" class="auth-button">Корзина</a>
                 }
             </div>
         </div>

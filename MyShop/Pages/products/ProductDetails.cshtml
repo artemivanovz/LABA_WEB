@@ -14,13 +14,27 @@
 
 
     <div class="content">
-        <aside class="sidebar">
-            <a href="/Index">Главная</a>
-            <a href="/About">О нас</a>
-            <a href="/Catalog">Каталог</a>
-            <a href="/Contacts">Контакты</a>
-            <a href="/Feedback">Отзывы</a>
-        </aside>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <aside class="sidebar">
+                <a href="/Index">Главная</a>
+                <a href="/About">О нас</a>
+                <a href="/Catalog">Каталог</a>
+                <a href="/Contacts">Контакты</a>
+                <a href="/Feedback">Отзывы</a>
+                <a href="/pdf/privacy-policy.pdf" target="_blank">Политика конфиденциальности</a>
+            </aside>
+        }
+        else
+        {
+            <aside class="sidebar">
+                <a href="/Index">Главная</a>
+                <a href="/About">О нас</a>
+                <a href="/Catalog">Каталог</a>
+                <a href="/Contacts">Контакты</a>
+                <a href="/pdf/privacy-policy.pdf" target="_blank">Политика конфиденциальности</a>
+            </aside>
+        }
 
         <main class="product-page">
             @if (Model.Product != null)
@@ -29,10 +43,13 @@
                 <img src="/@Model.Product.ImagePath" alt="@Model.Product.Name" class="product-detail-img">
                 <p>@Model.ProductDescription</p>
                 <p class="product-price">Цена: @Model.Product.Price ₽</p>
-                <form method="post" asp-page-handler="AddToCart">
-                    <input type="hidden" name="productId" value="@Model.Product.Id" />
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form method="post" asp-page-handler="AddToCart">
+                        <input type="hidden" name="productId" value="@Model.Product.Id" />
                     <button type="submit" class="add-to-cart-button">Добавить в корзину</button>
                 </form>
+                }
                 <a href="/Catalog" class="back-link">Вернуться в каталог</a>
             }
             else

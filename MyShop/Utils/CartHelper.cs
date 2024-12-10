@@ -43,5 +43,37 @@ namespace MyShop.Utils
             // Удаляем корзину из сессии
             session.Remove(CartSessionKey);
         }
+        public static void UpdateQuantity(ISession session, int productId, int change)
+        {
+            var cart = GetCart(session);
+            var item = cart.FirstOrDefault(i => i.ProductId == productId);
+
+            if (item != null)
+            {
+                item.Quantity += change;
+
+                // Удаляем товар, если количество <= 0
+                if (item.Quantity <= 0)
+                {
+                    cart.Remove(item);
+                }
+            }
+
+            SaveCart(session, cart);
+        }
+
+        // Удаление товара из корзины
+        public static void RemoveItem(ISession session, int productId)
+        {
+            var cart = GetCart(session);
+            var item = cart.FirstOrDefault(i => i.ProductId == productId);
+
+            if (item != null)
+            {
+                cart.Remove(item);
+            }
+
+            SaveCart(session, cart);
+        }
     }
 }

@@ -71,6 +71,7 @@
                 <a href="/Catalog">Каталог</a>
                 <a href="/Contacts">Контакты</a>
                 <a href="/Feedback">Отзывы</a>
+                <a href="/pdf/privacy-policy.pdf" target="_blank">Политика конфиденциальности</a>
             </aside>
         }
         else
@@ -80,6 +81,7 @@
                 <a href="/About">О нас</a>
                 <a href="/Catalog">Каталог</a>
                 <a href="/Contacts">Контакты</a>
+                <a href="/pdf/privacy-policy.pdf" target="_blank">Политика конфиденциальности</a>
             </aside>
         }
 
@@ -161,6 +163,14 @@
                     <div class="slide">
                         <img src="images/product6.png" alt="Фото 6">
                     </div>
+@*                     <div class="slides">
+                        @foreach (var product in Model.Products)
+                        {
+                            <div class="slide">
+                                <img src="/@product.ImagePath" alt="@product.Name">
+                            </div>
+                        }
+                    </div> *@
                 </div>
                 <!-- Кнопки навигации -->
                 <button class="prev" onclick="moveSlide(-1)">&#10094;</button>

@@ -12,41 +12,6 @@
 <body>
 
 
-@*     <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Логотип Cressida" class="logo-image">
-            </div>
-            <div class="site-name">Cressida</div>
-            <div class="auth-buttons">
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <!-- Если пользователь авторизован, приветствуем -->
-                    <span>Здравствуйте, @User.Identity.Name</span>
-                    <form method="post" action="/Index" style="display:inline;">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="auth-button">Выйти</button>
-                    </form>
-                }
-                else
-                {
-                    <!-- Если не авторизован - показываем кнопки -->
-                    <a href="/Login" class="auth-button">Вход</a>
-                    <a href="/Register" class="auth-button">Регистрация</a>
-                }
-            </div>
-        </div>
-        <nav class="top-nav">
-            <a href="/Service">Сервис</a>
-            <a href="/Certificates">Подарочные сертификаты</a>
-            <a href="/Production">Производство</a>
-            <form class="search-form" action="search.htm" method="get">
-                <input type="text" name="q" placeholder="Поиск по сайту" aria-label="Поиск по сайту">
-                <button type="submit">Найти</button>
-            </form>
-        </nav>
-    </header> *@
-
 
 
     <div class="content">
@@ -58,6 +23,7 @@
                 <a href="/Catalog">Каталог</a>
                 <a href="/Contacts">Контакты</a>
                 <a href="/Feedback">Отзывы</a>
+                <a href="/pdf/privacy-policy.pdf" target="_blank">Политика конфиденциальности</a>
             </aside>
         }
         else
@@ -67,6 +33,7 @@
                 <a href="/About">О нас</a>
                 <a href="/Catalog">Каталог</a>
                 <a href="/Contacts">Контакты</a>
+                <a href="/pdf/privacy-policy.pdf" target="_blank">Политика конфиденциальности</a>
             </aside>
         }
 
